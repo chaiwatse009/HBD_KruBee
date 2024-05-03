@@ -2510,21 +2510,6 @@
 
       function playAudio() {
         // Line Notify
-        // var formdata = new FormData();
-        // var requestOptions = {
-        //    method: "POST",
-        //    body: formdata,
-        //    redirect: "follow",
-        //  };
-
-        //  fetch(
-        //    "https://biwebapi.lt.co.th/api/Service?msg=มีคนเปิดดู&token=O7XOxgpKwp0AwxiM5D5ROaU9xq7scSejmDwmv7oQZ89",
-        //    requestOptions
-        //  )
-        //    .then((response) => response.text())
-        //    .then((result) => console.log(result))
-        //    .catch((error) => console.log("error", error));
-
         const requestOptions = {
           method: "POST",
           redirect: "follow"
@@ -2566,20 +2551,15 @@
             element2.remove();
 
             // Line Notify
-            var formdata = new FormData();
-            var requestOptions = {
+              const requestOptions = {
               method: "POST",
-              body: formdata,
-              redirect: "follow",
+              redirect: "follow"
             };
 
-            fetch(
-              "http://recruit.lt.co.th/Linenotify/CallApiline?msg=มีคนดูจนจบ,O7XOxgpKwp0AwxiM5D5ROaU9xq7scSejmDwmv7oQZ89",
-              requestOptions
-            )
+            fetch("https://biwebapi.lt.co.th/api/Service?message=มีคนดูจนจบ&token=O7XOxgpKwp0AwxiM5D5ROaU9xq7scSejmDwmv7oQZ89", requestOptions)
               .then((response) => response.text())
               .then((result) => console.log(result))
-              .catch((error) => console.log("error", error));
+              .catch((error) => console.error(error));
 
             clearInterval(intervalId);
           }
