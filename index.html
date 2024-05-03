@@ -2510,20 +2510,41 @@
 
       function playAudio() {
         // Line Notify
-        var formdata = new FormData();
-        var requestOptions = {
-           method: "POST",
-           body: formdata,
-           redirect: "follow",
-         };
+        // var formdata = new FormData();
+        // var requestOptions = {
+        //    method: "POST",
+        //    body: formdata,
+        //    redirect: "follow",
+        //  };
 
-         fetch(
-           "https://biwebapi.lt.co.th/api/Service?msg=มีคนเปิดดู&token=O7XOxgpKwp0AwxiM5D5ROaU9xq7scSejmDwmv7oQZ89",
-           requestOptions
-         )
-           .then((response) => response.text())
-           .then((result) => console.log(result))
-           .catch((error) => console.log("error", error));
+        //  fetch(
+        //    "https://biwebapi.lt.co.th/api/Service?msg=มีคนเปิดดู&token=O7XOxgpKwp0AwxiM5D5ROaU9xq7scSejmDwmv7oQZ89",
+        //    requestOptions
+        //  )
+        //    .then((response) => response.text())
+        //    .then((result) => console.log(result))
+        //    .catch((error) => console.log("error", error));
+
+           // สร้างข้อมูลที่จะส่ง
+          var formData = new URLSearchParams();
+          formData.append("message", "มีคนเปิดดู");
+          formData.append("token", "O7XOxgpKwp0AwxiM5D5ROaU9xq7scSejmDwmv7oQZ89");
+
+          // ตั้งค่า requestOptions
+          var requestOptions = {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: formData,
+            redirect: "follow"
+          };
+
+          // ใช้ fetch เพื่อส่งคำขอไปยัง endpoint ของคุณ
+          fetch("https://biwebapi.lt.co.th/api/Service", requestOptions)
+            .then(response => response.text())  // หรือ response.json() ถ้าคุณตอบกลับด้วย JSON
+            .then(result => console.log(result))
+            .catch(error => console.log('error', error));
 
         music_audio.play();
          var hides = document.getElementById("hides");
